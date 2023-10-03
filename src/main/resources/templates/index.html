@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<h1>Student Database</h1>
+
+<table th:if="${studentList != null && studentList != ''}">
+    <tr th:each="aStudent : ${studentList}">
+        <td th:text="${aStudent.id}">0</td>
+        <td th:text="${aStudent.name}">Frank</td>
+
+    </tr>
+</table>
+<br><hr><br>
+
+    <form method="post" action="/addStudent" th:action="@{/addStudent}" th:object="${student}">
+        ID: <input type="number" name="id" th:field="*{id}" /><br>
+        Name: <input type="text" name ="name" th:field="*{name}"/><br>
+        <input type="submit" value="Add Student!" />
+    </form>
+
+
+</body>
+
+
+
+</html>
