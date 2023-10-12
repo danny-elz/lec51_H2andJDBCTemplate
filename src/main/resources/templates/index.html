@@ -16,15 +16,18 @@
         <th>Degree Type</th>
     </tr>
     </thead>
-    <tbody>
+    <body>
     <tr th:each="aStudent : ${studentList}">
         <td th:text="${aStudent.id}">0</td>
         <td th:text="${aStudent.name}"></td>
         <td th:text="${aStudent.lastName}"></td>
         <td th:text="${aStudent.age}"></td>
         <td th:text="${aStudent.degreeType}"></td>
+        <td><a th:href="@{|/editStudentById/${aStudent.id}|}">Edit</a></td>
+        <td><a th:href="@{|/deleteStudentById/${aStudent.id}|}">Delete</a></td>
     </tr>
-    </tbody>
+
+    </body>
 </table>
 
 <br><hr><br>
