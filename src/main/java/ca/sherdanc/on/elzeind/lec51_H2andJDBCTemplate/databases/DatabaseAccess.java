@@ -10,7 +10,6 @@ import java.util.List;
 public class DatabaseAccess {
     @Autowired
     protected NamedParameterJdbcTemplate jdbc;
-
     public void updateStudent(Student updatedStudent) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
 
@@ -39,7 +38,6 @@ public class DatabaseAccess {
             System.out.println("Student inserted into database");
         }
     }
-
     public List<Student> getStudentList() {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         String query = "SELECT * FROM student";
@@ -59,7 +57,6 @@ public class DatabaseAccess {
         namedParameters.addValue("nameInput", nameInput);
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<>(Student.class));
     }
-
     public List<Student> getStudentListById(Long id) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         String query = "SELECT * FROM student WHERE id = :id";
@@ -67,7 +64,6 @@ public class DatabaseAccess {
         return jdbc.query(query, namedParameters, new
                 BeanPropertyRowMapper<Student>(Student.class));
     }
-
     public void deleteStudentById(Long id) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         String query = "DELETE FROM student WHERE id = :id";
