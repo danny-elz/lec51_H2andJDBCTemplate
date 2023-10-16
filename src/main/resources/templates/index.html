@@ -32,7 +32,7 @@
 
 <br><hr><br>
 
-    <form method="post" action="/addStudent" th:action="@{/addStudent}" th:object="${student}">
+<form method="post" action="/addStudent" th:action="@{/addStudent}" th:object="${student}">
         ID: <input type="number" name="id" th:field="*{id}" /><br>
         First Name: <input type="text" name ="name" th:field="*{name}"/><br>
         Last Name: <input type="text" name ="name" th:field="*{lastName}"/><br>
@@ -42,7 +42,7 @@
         <option value="Postgraduate">Postgraduate</option>
     </select><br><br>
         <input type="submit" value="Add Student!" />
-    </form>
+</form>
 
 <form method="post" action="/filter" th:action="@{/filter}">
     Filter by degree:
