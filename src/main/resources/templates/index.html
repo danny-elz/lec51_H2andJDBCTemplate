@@ -18,7 +18,7 @@
     </thead>
     <body>
     <tr th:each="aStudent : ${studentList}">
-        <td th:text="${aStudent.id}"></td>
+        <td th:text="${aStudent.id}">0</td>
         <td th:text="${aStudent.name}"></td>
         <td th:text="${aStudent.lastName}"></td>
         <td th:text="${aStudent.age}"></td>
@@ -33,6 +33,7 @@
 <br><hr><br>
 
 <form method="post" action="/addStudent" th:action="@{/addStudent}" th:object="${student}">
+        ID: <input type="number" name="id" th:field="*{id}" /><br>
         First Name: <input type="text" name ="name" th:field="*{name}"/><br>
         Last Name: <input type="text" name ="name" th:field="*{lastName}"/><br>
         Age: <input type="text" name ="name" th:field="*{age}"/><br>
