@@ -6,9 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
-
-@Controller
+    @Controller
 public class StudentController {
     @Autowired
     private DatabaseAccess da;
@@ -54,7 +52,6 @@ public class StudentController {
         model.addAttribute("studentList", da.getStudentList());
         return "index";
     }
-
     @GetMapping("/editStudentById/{id}")
     public String editStudentById(Model model, @PathVariable Long id) {
         Student student = da.getStudentListById(id).get(0);

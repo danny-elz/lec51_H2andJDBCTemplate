@@ -13,7 +13,7 @@ public class DatabaseAccess {
     protected NamedParameterJdbcTemplate jdbc;
     public void insertStudent(Student student) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        String query = "INSERT INTO student(name, lastName, age, degreeType) VALUES (:name,:lastName, :age, :degreeType)";
+        String query = "INSERT INTO student(name, lastName, age, degreeType) VALUES (:name, :lastName, :age, :degreeType)";
         namedParameters.addValue("name", student.getName());
         namedParameters.addValue("lastName", student.getLastName());
         namedParameters.addValue("age", student.getAge());
