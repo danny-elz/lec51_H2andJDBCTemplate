@@ -31,12 +31,6 @@ public class DatabaseAccess {
         String query = "SELECT * FROM student";
         return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<Student>(Student.class));
     }
-    public List<Student> getStudentById(Long id){
-        MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-        String query = "SELECT * FROM student WHERE id = :id";
-        namedParameters.addValue("id", id);
-        return jdbc.query(query, namedParameters, new BeanPropertyRowMapper<>(Student.class));
-    }
     public List<Student> getStudentsByDegreeType(String degreeType) {
         MapSqlParameterSource namedParameters = new MapSqlParameterSource();
         String query = "SELECT * FROM student WHERE degreeType =  :degreeType";
@@ -74,7 +68,6 @@ public class DatabaseAccess {
             System.out.println("Deleted student " + id + " from the database.");
         }
     }
-
 }
 
 
