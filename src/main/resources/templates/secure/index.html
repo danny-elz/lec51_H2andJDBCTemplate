@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+<h1>Student Database</h1>
+
+<table th:if="${studentList != null && studentList != ''}" class="student-table">
+    <head>
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Degree Type</th>
+    </tr>
+    </head>
+    <body>
+    <tr th:each="aStudent : ${studentList}">
+        <td th:text="${aStudent.id}"></td>
+        <td th:text="${aStudent.name}"></td>
+        <td th:text="${aStudent.lastName}"></td>
+        <td th:text="${aStudent.age}"></td>
+        <td th:text="${aStudent.degreeType}"></td>
+        <td><a th:href="@{|/editStudentById/${aStudent.id}|}">Edit</a></td>
+        <td><a th:href="@{|/deleteStudentById/${aStudent.id}|}">Delete</a></td>
+    </tr>
+    </body>
+</table>
+
+<br><hr><br>
+
+<form method="post" action="/addStudent" th:action="@{/addStudent}" th:object="${student}">
+        ID: <input type="number" name="id" th:field="*{id}" readonly="readonly" /><br>
+        First Name: <input type="text" name ="name" th:field="*{name}"/><br>
+        Last Name: <input type="text" name ="name" th:field="*{lastName}"/><br>
+        Age: <input type="text" name ="name" th:field="*{age}"/><br>
+        Degree <select name="degree" id="degree" th:field="*{degreeType}">
+        <option value="Undergraduate">Undergraduate</option>
+        <option value="Postgraduate">Postgraduate</option>
+    </select><br><br>
+        <input type="submit" value="Add Student!" />
+</form>
+
+<form method="post" action="/filter" th:action="@{/filter}">
+    Filter by degree:
+    <select name="degreeType" id="degreeTypeSelect">
+        <option value="Undergraduate">Undergraduate</option>
+        <option value="Postgraduate">Postgraduate</option>
+    </select>
+    <input type="submit" value="Filter!" />
+</form>
+
+<form method="post" action="/filterByName" th:action="@{/filterByName}">
+   Filter by name: <input type="text" name="nameInput">
+    <input type="submit" value="Filter By Name">
+</form>
+
+</body>
+</html>

@@ -29,6 +29,7 @@ public class StudentController {
         }
         model.addAttribute("student", new Student());
         model.addAttribute("studentList", da.getStudentList());
+        System.out.println(student);
         return "index";
     }
     @PostMapping ("/filter")
@@ -61,7 +62,9 @@ public class StudentController {
         return "index";
     }
 
-}
+    }
+
+
 
 
 
